@@ -1,5 +1,7 @@
 import React from 'react'
-import { ListGroup, Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
+
+import Comment from './Comment';
 
 class CommentsList extends React.Component{
     
@@ -23,6 +25,28 @@ class CommentsList extends React.Component{
         }
     }
 
+    handleCommentDelete = async(index) => {
+        let objToDelete = this.state.comments[index];
+        console.log("this.state.comments: ", objToDelete);
+        try{
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + objToDelete._id, 
+            {
+                method: 'DELETE', 
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2N2JhNTk4MzViMDAwMTc1ODRlZmMiLCJpYXQiOjE2MDU3OTQ3MjUsImV4cCI6MTYwNzAwNDMyNX0.ZBxn9E-dluFBsGqKAIwygPI84Tzr0ZI6d9U_RszFQw0"
+                }
+              });
+            let deletedComment = await response.json();
+            // let newComments = this.state.comments.splice(index, 1);
+            
+            let newComments = this.state.comments.filter(obj => obj !== objToDelete);
+            console.log('comments without the deleted one: ', newComments);
+            this.setState({ comments: newComments})
+        } catch (e) {
+            console.log('error at deleting, ', e);
+        }
+    }
+
     render(){
         return(
             <div className="mb-5">
@@ -36,11 +60,7 @@ class CommentsList extends React.Component{
                     )
                 }
                 {this.state.comments.map((comments, index) => (
-                    <ListGroup key={index}>
-                        <ListGroup.Item>
-                             {comments.comment}, rating: {comments.rate}
-                        </ListGroup.Item>
-                    </ListGroup>
+                    <Comment key={index} keyIndex={index} comment={comments.comment} rate={comments.rate} handleDel={() => this.handleCommentDelete(index)}/>
                 ))}
             </div>
         );

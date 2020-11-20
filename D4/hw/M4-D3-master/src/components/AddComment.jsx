@@ -42,11 +42,16 @@ class AddComment extends React.Component{
                                 type="number"
                                 name="comment"
                                 id="comment"
-                                placeholder="Your comment"
+                                placeholder="1-5"
+                                min="1"
+                                max="5"
                                 // value={}
                                 // onChange={}
                             />
                         </Form.Group>
+                    </Col>
+                    <Col md={12}>
+                        <button className='btn-info offset-5'> Submit </button>
                     </Col>
                 </Row>
             </Container>
