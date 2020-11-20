@@ -60,7 +60,13 @@ class CommentsList extends React.Component{
                     )
                 }
                 {this.state.comments.map((comments, index) => (
-                    <Comment key={index} keyIndex={index} comment={comments.comment} rate={comments.rate} handleDel={() => this.handleCommentDelete(index)}/>
+                    <Comment 
+                        key={index} 
+                        keyIndex={index} 
+                        comment={comments.comment} 
+                        rate={comments.rate} 
+                        id={comments._id}
+                        handleDel={() => this.handleCommentDelete(index)}/>
                 ))}
             </div>
         );
