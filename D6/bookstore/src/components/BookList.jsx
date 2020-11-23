@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 export default function BookList(props) {
   return (
-    <Container style={{width: '70vw', float: 'left'}}>
+    <Container>
       <Row>
         {props.books.map((book) => {
           return (

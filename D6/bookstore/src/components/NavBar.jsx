@@ -10,7 +10,6 @@ import romance from "../data/romance.json";
 import scifi from "../data/scifi.json";
 import BookList from "./BookList.jsx";
 import JumbotronComponent from './JumbotronComponent';
-import CommentArea from './CommentArea.jsx';
 
 let bookCategories = ["fantasy", "horror", "history", "romance", "scifi"];
 let books = {
@@ -92,10 +91,9 @@ class NavBar extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <JumbotronComponent />
         <br />
         <BookList books={this.state.books} />
-        
-        <CommentArea img={this.state.books.img} asin={this.props.asin} />
       </>
     );
   }

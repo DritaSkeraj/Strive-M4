@@ -25,7 +25,7 @@ class SingleBook extends React.Component {
         this.setState({ cardStyle: { color: "black" } });
         this.setState({ selected: false });
       } else {
-        this.setState({ cardStyle: { color: "black" } });
+        this.setState({ cardStyle: { color: "#1b1b1b" } });
         this.setState({ selected: true });
       }
     };
@@ -42,16 +42,14 @@ class SingleBook extends React.Component {
             src={this.props.book.img}
             style={{ height: "20rem" }}
           />
-          <Card.Body style={{ height: "12rem" }}>
+          <Card.Body style={{ height: "13rem" }}>
             <Card.Title>{this.props.book.title}</Card.Title>
             <Card.Text>{this.props.book.price}</Card.Text>
             <Button variant="primary">Go somewhere</Button>
             <MyBadge color={variant} category={this.props.book.category} />
           </Card.Body>
         </Card>
-
-        
-        {/*<CommentArea img={this.props.book.img} asin={this.props.book.asin} />*/}
+        { this.state.selected && (<CommentArea img={this.props.book.img} asin={this.props.book.asin} />)}
       </div>
     );
   }
