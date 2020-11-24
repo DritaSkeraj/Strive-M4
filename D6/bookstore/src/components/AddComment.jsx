@@ -19,54 +19,56 @@ class AddComment extends React.Component {
     //reservation['phone'] --> reservation.phone = '3'
     comment[currentId] = e.currentTarget.value;
     comment['elementId'] = id;
-    console.log('update comment field, comment[2]: ', comment[2]);
-    console.log('update compoent, comments array: ', comment);
     this.setState({ comment: comment});
   };
+
+  fetchMovies = async(method) => {
+    try {
+        let response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/",
+          {
+            method: method,
+            body: JSON.stringify(this.state.comment),
+            headers: new Headers({
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2N2JhNTk4MzViMDAwMTc1ODRlZmMiLCJpYXQiOjE2MDU3OTQ3MjUsImV4cCI6MTYwNzAwNDMyNX0.ZBxn9E-dluFBsGqKAIwygPI84Tzr0ZI6d9U_RszFQw0",
+              "Content-Type": "application/json",
+            }),
+          }
+        );
+        console.log("POST response, ", response);
+        if (response.ok) {
+          alert("yayyyy! commented successfully!");
+          this.setState({
+            comment: {
+              comment: "",
+              rate: 0,
+              elementId: "",
+            },
+            errMessage: "",
+            loading: false,
+          });
+        } else {
+          console.log("an error occurred");
+          let error = await response.json();
+          this.setState({
+            errMessage: error.message,
+            loading: false,
+          });
+        }
+      } catch (e) {
+        console.log(e); // Error
+        this.setState({
+          errMessage: e.message,
+          loading: false,
+        });
+      }
+  }
 
   submitComment = async (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.comment),
-          headers: new Headers({
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2N2JhNTk4MzViMDAwMTc1ODRlZmMiLCJpYXQiOjE2MDU3OTQ3MjUsImV4cCI6MTYwNzAwNDMyNX0.ZBxn9E-dluFBsGqKAIwygPI84Tzr0ZI6d9U_RszFQw0",
-            "Content-Type": "application/json",
-          }),
-        }
-      );
-      console.log("POST response, ", response);
-      if (response.ok) {
-        alert("yayyyy! commented successfully!");
-        this.setState({
-          comment: {
-            comment: "",
-            rate: 0,
-            elementId: "",
-          },
-          errMessage: "",
-          loading: false,
-        });
-      } else {
-        console.log("an error occurred");
-        let error = await response.json();
-        this.setState({
-          errMessage: error.message,
-          loading: false,
-        });
-      }
-    } catch (e) {
-      console.log(e); // Error
-      this.setState({
-        errMessage: e.message,
-        loading: false,
-      });
-    }
+    this.fetchMovies('POST');
   };
 
   render() {
