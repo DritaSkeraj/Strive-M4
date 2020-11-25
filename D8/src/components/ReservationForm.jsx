@@ -73,16 +73,19 @@ class ReservationForm extends React.Component {
     }
 
     render() {
+
+        let display = {};
+
+        if(!this.state.errMessage){
+            display = {display: 'none'}
+        }
+
         return (
             <div>
-                {
-                    this.state.errMessage && (
-                        <Alert variant="danger">
-                            We encountered a problem with your request
-                            {this.state.errMessage}
-                        </Alert>
-                    )
-                }
+                {<Alert variant="danger" style={display}>
+                We encountered a problem with your request
+                {this.state.errMessage}
+            </Alert>}
                 {
                     this.state.loading && (
                         <div className="d-flex justify-content-center my-5">

@@ -11,6 +11,9 @@ import DishDetails from "./components/DishDetails";
 import Menu from "./components/Menu";
 
 class App extends React.Component {
+  state = {
+    pathDetails: 0
+  }
   render() {
     return (
       <>
@@ -28,7 +31,8 @@ class App extends React.Component {
           />
           <Route path="/menu" exact component={Menu} />
           <Route path="/reservation" exact component={Reservations} />
-          <Route path="/details/:stefano" component={DishDetails} />
+          <Route path="/details/:stefano" component={DishDetails} >{this.setState({pathDetails: this.path})} </Route>
+          
         </Router>
       </>
     );

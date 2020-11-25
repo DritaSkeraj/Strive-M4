@@ -2,13 +2,15 @@ import React from "react";
 
 import { Container, ListGroup, Alert, Badge } from "react-bootstrap";
 
-export let DishComments = (props) => {
+class DishComments extends React.Component{
+
+  render(){
   return (
     <Container>
-      {props.selectedDish ? (
+      {this.props.selectedDish ? (
         <ListGroup className="mt-5 mb-5">
-          <h2 className="text-center mb-3">{props.selectedDish.name}</h2>
-          {props.selectedDish.comments.map((comment, index) => {
+          <h2 className="text-center mb-3">{this.props.selectedDish.name}</h2>
+          {this.props.selectedDish.comments.map((comment, index) => {
             let variant = "";
 
             switch (comment.rating) {
@@ -43,4 +45,7 @@ export let DishComments = (props) => {
       )}
     </Container>
   );
-};
+  }
+}
+
+export default DishComments;
