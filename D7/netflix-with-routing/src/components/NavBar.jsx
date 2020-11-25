@@ -14,6 +14,7 @@ import {
     Link
   } from "react-router-dom";
 import TvShows from './TVShows';
+import Movies from './Movies'
 
 const NavBar = () => {
 
@@ -25,7 +26,7 @@ const NavBar = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Link to="/shows" className='nav'>Tv Shows</Link>
-                <Nav.Link href="#link" className='nav'>Movies</Nav.Link>
+                <Link to="/movies" className='nav'>Movies</Link>
                 <Nav.Link href="#link" className='nav'>Recently Added</Nav.Link>
                 <Nav.Link href="#link" className='nav'>My List</Nav.Link>
                 </Nav>
@@ -49,6 +50,9 @@ const NavBar = () => {
         <Switch>
           <Route exact path="/shows">
             <TvShows />
+          </Route>
+          <Route exact path="/movies">
+            <Movies />
           </Route>
         </Switch>
     </>
