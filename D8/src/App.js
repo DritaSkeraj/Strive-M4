@@ -31,8 +31,8 @@ class App extends React.Component {
           />
           <Route path="/menu" exact component={Menu} />
           <Route path="/reservation" exact component={Reservations} />
-          <Route path="/details/:stefano" component={DishDetails} >{this.setState({pathDetails: this.path})} </Route>
-          
+          <Route path="/details/:stefano" component={DishDetails} />{/*this.setState({pathDetails: this.path})} </Route>*/}
+          let {stefano}  = useParams();
         </Router>
       </>
     );
