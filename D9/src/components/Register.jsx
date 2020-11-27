@@ -40,15 +40,8 @@ class Register extends React.Component{
                   {this.state.errMessage}
               </Alert>
               )}
-              {this.state.loading && (
-              <div className="d-flex justify-content-center my-5">
-                  Registering, please wait
-                  <div className="ml-2">
-                  <Spinner animation="border" variant="success" />
-                  </div>
-              </div>
-              )}
-              <Form className="w-100 mb-5" onSubmit={this.submitHandeler} className="needs-validation" noValidate>
+              <Form className="w-100 mb-5"
+              className="needs-validation" onSubmit={this.submitHandler} noValidate>
               <Row>
                   <br />
                   <h6 style={{margin: '0 auto'}}>To register, fill out the followings:</h6>
@@ -64,7 +57,6 @@ class Register extends React.Component{
                       placeholder="Your name"
                       required
                       minLength="2"
-                      value={this.state.name}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -84,7 +76,6 @@ class Register extends React.Component{
                       placeholder="Your surname"
                       required
                       minLength="3"
-                      value={this.state.surname}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -104,7 +95,6 @@ class Register extends React.Component{
                       placeholder="Your email"
                       required
                       minLength="3"
-                      value={this.state.email}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -124,7 +114,6 @@ class Register extends React.Component{
                       placeholder="Your password"
                       required
                       minLength="8"
-                      value={this.state.password}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -144,7 +133,6 @@ class Register extends React.Component{
                       placeholder="1910+"
                       required
                       min='1910'
-                      value={this.state.yearOfBirth}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -163,7 +151,6 @@ class Register extends React.Component{
                       id="street"
                       placeholder="street"
                       required
-                      value={this.state.street}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -182,7 +169,6 @@ class Register extends React.Component{
                       id="city"
                       placeholder="city"
                       required
-                      value={this.state.city}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -203,7 +189,6 @@ class Register extends React.Component{
                       required
                       min="10000"
                       max="99999"
-                      value={this.state.postalCode}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -221,7 +206,6 @@ class Register extends React.Component{
                       name="creditCard"
                       id="creditCard"
                       placeholder="creditCard"
-                      value={this.state.creditCard}
                       onChange={this.updateRegisterField}
                       />
                       <div className="invalid-feedback">
@@ -232,7 +216,9 @@ class Register extends React.Component{
               </Row>
               <Row>
                   <Col md={12}>
-                  <button className="btn-info offset-5" type="Submit" style={{width: '100%', margin: '0 auto'}}>
+                  <button className="btn-info offset-5" type="Submit" 
+                  onClick={this.submitHandeler}
+                  style={{width: '100%', margin: '0 auto'}}>
                       {" "}
                       Submit{" "}
                   </button>
