@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faBook, faArrowCircleDown } from '@fortawesome/free-solid-svg-icons'
 import '../styles/styles.css';
+// import '../styles/login.css';
 import logo from '../assets/logo.png';
 
 const AsideMenu = () => {

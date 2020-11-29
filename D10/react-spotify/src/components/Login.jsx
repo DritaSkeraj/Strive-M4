@@ -1,7 +1,6 @@
 import React from 'react';
 
 import '../styles/login.css';
-// import '../styles/styles.css';
 
 import logo from '../assets/logo.png';
 
@@ -13,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Login = () => {
     return(
         <>
-        <section className="container-fluid position-relative">
+        <section className="container-fluid login">
       <div className="login-logo">
         <a href="index.html"><img src={logo} /></a>
       </div>
