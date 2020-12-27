@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsisH,
-  faHeart,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
+import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import "../styles/styles.css";
@@ -87,10 +87,10 @@ class HomeContent extends React.Component {
                               alt="spotify_playlist_1"
                             />
 
-                            <span className="overlay-icons">
+                            <span className="overlay-icons" style={{'margin': '0 auto'}}>
                               <FontAwesomeIcon
                                 icon={faHeart}
-                                className="heart mr-3"
+                                className="heart-outline mr-3"
                               />
                               <FontAwesomeIcon
                                 icon={faPlay}
