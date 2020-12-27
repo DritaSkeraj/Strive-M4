@@ -15,8 +15,7 @@
   font-style: normal;
   font-weight: 700;
 }
-body {
-}
+
 .homeContent{
   height: 100vh;
   margin: 0;
@@ -32,8 +31,7 @@ body {
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 0px;
-  padding: 0px;
+  padding: 0px 0px 0px 2rem;
   /* font-family: 'Nunito Sans', sans-serif; */
   font-family: "Circular", Arial, Helvetica, sans-serif;
   overflow: hidden;
@@ -766,6 +764,21 @@ h6 > a:hover {
   top: 0px;
 }
 
+.albums-spinner{
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+
+.artist-name{
+  color: #ddd;
+  margin-top: 3rem;
+}
+
+.artist-name:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
 /* .overlay-icons.far.fa-heart {
   font: 4px !important;
   margin-right: 2px;

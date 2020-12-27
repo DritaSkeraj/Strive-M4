@@ -44,10 +44,11 @@
 .arrow {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
-  height: 1.9em;
   margin-right: 10px;
-  padding: 5px;
+  padding: 1px;
   z-index: 222222222222;
+  color: #fff;
+  font-size: 1.5em;
 }
 .header-btns {
   position: absolute;
@@ -97,11 +98,8 @@
 }
 .user-icon {
   background-color: rgb(70, 70, 70);
-  padding: 8px;
   border-radius: 50%;
-  margin-right: 5px;
-  padding-right: 5px;
-  justify-items: center;
+  text-align: center;
 }
 
 .album {
@@ -442,7 +440,6 @@ tr:hover .track-play {
   .arrow {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
-    height: 1.9em;
     margin-right: 10px;
     padding: 5px;
     z-index: 222222222222;
@@ -478,6 +475,7 @@ tr:hover .track-play {
 
   .upgrade-btn:hover {
     background-color: rgba(0, 0, 0, 0.555);
+    transform: scale(1.06);
   }
   .profile-btn {
     font-size: 12px;
@@ -502,7 +500,6 @@ tr:hover .track-play {
     padding: 8px;
     border-radius: 50%;
     margin-right: 5px;
-    padding-right: 5px;
   }
   .album {
     height: 200px;
@@ -1013,4 +1010,26 @@ li {
 /* active class for music track */
 .active-track {
   color: limegreen;
+}
+/*header*/
+.dropdown-toggle::after{
+  display: none !important;
+}
+
+.dropdown-menu.show {
+  display: block;
+  background-color: #000;
+  margin-top: -2px !important;
+  color: black;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.dropdown-menu > .dropdown-item{
+  font-size: 0.7em;
+  margin: 5px 0px;
+}
+
+.dropdown-menu > .dropdown-item:hover{
+  background-color: #000;
 }

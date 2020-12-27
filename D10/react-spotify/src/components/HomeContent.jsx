@@ -22,7 +22,7 @@ class HomeContent extends React.Component {
       const result = await this.fetchArtist(artist);
       return {
         name: artist.toUpperCase(),
-        data: result.data,
+        data: result.data.slice(0,15),
       };
     });
     const result = await Promise.all(promiseArray);
@@ -64,18 +64,18 @@ class HomeContent extends React.Component {
             className="main-content d-flex flex-column"
             style={{ overflowX: "hidden" }}
           >
-            <div className="justify-content-center">
+            <div className="justify-content-center" style={{marginBottom: '-7rem !important'}}>
               <HomeNavigationMenu />
             </div>
 
             {loading ? (
               <div>
-                <Spinner animation="grow" variant="light" className="mt-3" />
+                <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
               </div>
             ) : (
               albums.map((category) => (
                 <>
-                  <h4 style={{ color: "#ddd" }}>{category.name}</h4>
+                  <h4 className="artist-name">{category.name}</h4>
                   <Row>
                     {category.data.map((album) => (
                       <div>

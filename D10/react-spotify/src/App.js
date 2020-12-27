@@ -7,6 +7,7 @@ import Login from './components/Login';
 import HomeContent from './components/HomeContent';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import AlbumHeader from "./components/album/AlbumHeader";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' exact component={AsideMenu} />
         <Route path='/' exact component={Player} />
         <Route path='/' exact component={HomeContent} />
+        <Route path='/albumHeader' exact component={AlbumHeader} />
     </Router>
   );
 }
