@@ -182,7 +182,7 @@ aside {
   position: relative;
   padding-left: 15%;
   font-size: 1rem;
-  padding-top: 20px;
+  padding-top: 10em;
   display: block;
   overflow-y: auto;
   white-space: nowrap;
@@ -342,6 +342,7 @@ aside {
   .album{
     height: 500px;
   }
+
   /* .playlists {
     height: 220px;
     overflow-y: auto;

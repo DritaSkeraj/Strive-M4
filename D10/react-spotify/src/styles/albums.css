@@ -17,6 +17,14 @@
   overflow-x: hidden;
 }
 
+
+.album.row{
+  padding-top: 5em;
+  background: #55164f !important;
+  height: 400px !important;
+  width: 100%;
+}
+
 .albums-holder {
   max-width: calc(100vw - 232px);
   max-height: calc(100vh - 90px);
@@ -106,7 +114,6 @@
   height: 200px;
   width: 100%;
   padding: 35px 30px 10px 30px;
-  margin-top: 10px;
 }
 .album .album-cover {
   width: 240px;
@@ -178,7 +185,6 @@
     rgba(18, 18, 18, 0.9192051820728291) 84%,
     rgba(92, 24, 85, 0.8603816526610644) 100%
   );
-  margin-top: 90px;
   padding: 20px 40px;
 }
 .playlist-btns img {
@@ -505,7 +511,6 @@ tr:hover .track-play {
     height: 200px;
     width: 100%;
     padding: 35px 30px 10px 30px;
-    margin-top: 10px;
   }
   .album .album-cover {
     width: 240px;
@@ -519,7 +524,7 @@ tr:hover .track-play {
     text-transform: uppercase;
     color: white;
     font-family: "Circular", sans-serif;
-    justify-content: flex-end;
+    justify-content: center;
   }
   .album .album-details h4 {
     font-weight: 700;
