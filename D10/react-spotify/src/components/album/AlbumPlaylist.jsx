@@ -1,60 +1,144 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "../../styles/albums.css";
-import {BsFillPlayFill} from 'react-icons/bs';
+import { BsFillPlayFill } from "react-icons/bs";
+import { Spinner } from "react-bootstrap";
 
 class AlbumPlaylist extends Component {
-    render() {
-        return (
-            <div className='playlist'>
-                  <div className='playlist-btns mt-3 mb-3'>
-                    <i className="fas fa-pause-circle fa-3x"></i>
-                    <i className="far fa-heart fa-2x mr-3 ml-3"></i>
-                     <i className="fa fa-ellipsis-h fa-2x"></i>
-                  </div>
-                  <div className='playlist-table'>
-                    <table className='table table-borderless'>
-                      <thead>
-                        <tr>
-                          <th scope="col th-sm">
-                            <span># </span>
-                          </th>
-                          <th scope="col th-lg" style={{paddingLeft: '50px'}} >Title</th>
-                          <th scope="col th-sm">
-                            <i className="far fa-clock"></i>
-                          </th>
-                          <div style={{borderBottom: '1px solid #b3b3b3', width: '90%'}}></div>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <tr  onclick="printInnerText(this)">
-                          <th scope="row" style={{verticalAlign: 'middle', minWidth: '30px', maxWidth: '30px'}}>
-                            <span className='track-num' style={{width: '30px !important'}}>1 </span>
-                              <BsFillPlayFill 
-                              onclick="printInnerText()" 
-                              className='track-play play-track-btn'/>
-                          </th>
-                          <td>
-                            <ul>
-                              <li className='song'>20th Centry Fox Fanfare</li>
-                              <li className='group' style={{verticalAlign: 'middle'}}>Queen</li>
-                            </ul>
-                          </td>
-                          <td style={{verticalAlign: 'middle'}}>
-                            <img src="https://img.icons8.com/ios/15/b3b3b3/like.png" className='track-heart'/>
-                            0:25
-                            <img src="https://img.icons8.com/material/15/b3b3b3/more--v1.png" className='track-dots'/>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className='playlist-footer'>
-                    &copy 2018 Queen Productions Ltd, under exclusive licence to Universal International Music BV<br/>
-                    ℗ A Virgin Records Release; This Compilation ℗ 2018 Queen Productions Ltd, under exclusive licence to Universal International Music BV
-                  </p>
+  state = {
+    album: "",
+    loading: "true",
+  };
+
+  componentDidMount = () => {
+    this.fetchAlbum(194219022);
+  };
+
+  fetchAlbum = (id) => {
+    fetch(
+      "https://deezerdevs-deezer.p.rapidapi.com/album/" + id,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
+          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      },
+      this.setState({ loading: true })
+    )
+      .then((response) => response.json())
+      .then((fetchedAlbum) =>
+        this.setState({ album: fetchedAlbum, loading: false })
+      );
+  };
+
+  toMinutes = (d) => {
+    d = Number(d);
+    let h = Math.floor(d / 3600);
+    let m = Math.floor((d % 3600) / 60);
+    let s = Math.floor((d % 3600) % 60);
+
+    let hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+    let mDisplay = m > 0 ? m + (m == 1 ? " minute " : " minutes ") : "";
+    let sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    return " " + hDisplay + mDisplay + sDisplay;
+  };
+
+  render() {
+    return (
+      <div className="playlist">
+        <div className="playlist-btns mt-3 mb-3">
+          <i className="fas fa-pause-circle fa-3x"></i>
+          <i className="far fa-heart fa-2x mr-3 ml-3"></i>
+          <i className="fa fa-ellipsis-h fa-2x"></i>
+        </div>
+        <div className="playlist-table">
+          <table className="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col th-sm">
+                  <span># </span>
+                </th>
+                <th scope="col th-lg" style={{ paddingLeft: "50px" }}>
+                  Title
+                </th>
+                <th scope="col th-sm">
+                  <i className="far fa-clock"></i>
+                </th>
+                <div
+                  style={{ borderBottom: "1px solid #b3b3b3", width: "90%" }}
+                ></div>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.loading ? (
+                <div>
+                  <Spinner
+                    animation="grow"
+                    variant="light"
+                    className="mt-3 albums-spinner"
+                  />
                 </div>
-        );
-    }
+              ) : (
+                this.state.album.tracks.data.map((track, key) => (
+                  <tr onclick="printInnerText(this)">
+                    <th
+                      scope="row"
+                      style={{
+                        verticalAlign: "middle",
+                        minWidth: "30px",
+                        maxWidth: "30px",
+                      }}
+                    >
+                      <span
+                        className="track-num"
+                        style={{ width: "30px !important" }}
+                      >
+                        {key}{" "}
+                      </span>
+                      <BsFillPlayFill
+                        onclick="printInnerText()"
+                        className="track-play play-track-btn"
+                      />
+                    </th>
+                    <td>
+                      <ul>
+                        <li className="song">{track.title}</li>
+                        <li
+                          className="group"
+                          style={{ verticalAlign: "middle" }}
+                        >
+                          {track.artist.name}
+                        </li>
+                      </ul>
+                    </td>
+                    <td style={{ verticalAlign: "middle" }}>
+                      <img
+                        src="https://img.icons8.com/ios/15/b3b3b3/like.png"
+                        className="track-heart"
+                      />
+                      <p className="group">{this.toMinutes(track.duration)}</p>
+                      <img
+                        src="https://img.icons8.com/material/15/b3b3b3/more--v1.png"
+                        className="track-dots"
+                      />
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+        <p className="playlist-footer">
+          &copy 2018 Queen Productions Ltd, under exclusive licence to Universal
+          International Music BV
+          <br />℗ A Virgin Records Release; This Compilation ℗ 2018 Queen
+          Productions Ltd, under exclusive licence to Universal International
+          Music BV
+        </p>
+      </div>
+    );
+  }
 }
 
 export default AlbumPlaylist;

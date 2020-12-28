@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "../../styles/albums.css";
+import { Spinner } from "react-bootstrap";
 
 class AlbumInfo extends Component {
   state = {
-    album: ""
+    album: "",
+    loading: 'true'
   };
 
   componentDidMount = () =>{
@@ -17,42 +19,63 @@ class AlbumInfo extends Component {
         "x-rapidapi-key": "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
       },
-    }).then((response) => response.json())
-    .then(fetchedAlbum => this.setState({album: fetchedAlbum}))
+    },this.setState({ loading: true })
+    ).then((response) => response.json())
+    .then(fetchedAlbum => this.setState({album: fetchedAlbum, loading: false}))
   };
+
+  toMinutes = (d) => {
+    d = Number(d);
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
+
+    let hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+    let mDisplay = m > 0 ? m + (m == 1 ? " minute " : " minutes ") : "";
+    return " " + hDisplay + mDisplay;
+    }
 
   render() {
     console.log(this.state.album)
     return (
-      
+      <>
+      {this.state.loading ? (
+        <div>
+          <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
+        </div>
+      ) : (
       <div className="album row bootstrapOverwrite">
         <div className="col-12 col-md-6 col-lg-4">
           <img
             className="album-cover img-fluid"
-            src="http://placehold.it/80x80"
-            alt="bohemian rhapsody"
+            src={this.state.album.cover_big}
+            alt={this.state.album.title}
           />
         </div>
 
         <div className="album-details col-12 col-md-6 col-lg-8">
           <h4 className="mt-2">albums</h4>
-          <h2>bohemian rhapsody</h2>
-          <h5>(the original soundtrack)</h5>
+          <h2>{this.state.album.title}</h2>
+          <h5>({this.state.album.label})</h5>
           <div className="mt-4 last-line">
             <img
-              src="http://placehold.it/10x10"
-              alt="queen"
+              src={this.state.album.artist.picture_small}
+              alt="artist"
               className="group-img"
             />
             <h6>
               <a href="../artist-page.html" className="group-name">
-                Queen
+                {this.state.album.artist.name}
               </a>
             </h6>
-            <p className="album-length">2018 • 22 songs, 1 hr 19 min</p>
+            <p className="album-length">{this.state.album.release_date.slice(0, 4)} • 
+            {this.state.album.tracks.data.length} songs, 
+            {this.toMinutes(this.state.album.duration)} </p>
           </div>
         </div>
       </div>
+      )}
+      </>
     );
   }
 }
