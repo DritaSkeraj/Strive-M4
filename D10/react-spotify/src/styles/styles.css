@@ -415,7 +415,6 @@ aside {
   .menu h6 .nav-tabs .nav-item.show .nav-link,
   .nav-tabs .nav-link,
   .main-content .dropdown-toggle {
-    background-color: transparent;
     border: 0px;
     font-size: 10px;
     font-weight: 500;
