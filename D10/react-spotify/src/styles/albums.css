@@ -291,14 +291,20 @@ th {
 }
 .track-num {
   font-size: 1rem;
+  min-width: 40px;
+  max-width: 40px;
 }
 tr:hover .track-num {
   display: none;
 }
 tr:hover .track-play {
-  padding-bottom: 10px;
   display: inline;
   cursor: pointer;
+  min-width: 25px;
+  max-width: 25px;
+  font-size: 1.5em;
+  padding: 0px !important;
+  margin-bottom: 5px;
 }
 /* tr:hover .track-heart, tr:hover .track-dots{
    display: inline;

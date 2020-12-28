@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "../../styles/albums.css";
+import {BsFillPlayFill} from 'react-icons/bs';
 
 class AlbumPlaylist extends Component {
     render() {
@@ -26,9 +27,11 @@ class AlbumPlaylist extends Component {
                       </thead>
                       <tbody>
                           <tr  onclick="printInnerText(this)">
-                          <th scope="row" style={{verticalAlign: 'middle'}}>
-                            <span className='track-num'>1 </span>
-                              <img src="https://img.icons8.com/android/16/b3b3b3/play.png" onclick="printInnerText()" className='track-play play-track-btn'/>
+                          <th scope="row" style={{verticalAlign: 'middle', minWidth: '30px', maxWidth: '30px'}}>
+                            <span className='track-num' style={{width: '30px !important'}}>1 </span>
+                              <BsFillPlayFill 
+                              onclick="printInnerText()" 
+                              className='track-play play-track-btn'/>
                           </th>
                           <td>
                             <ul>
