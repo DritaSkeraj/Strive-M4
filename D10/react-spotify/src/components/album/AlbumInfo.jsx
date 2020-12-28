@@ -6,6 +6,10 @@ class AlbumInfo extends Component {
     album: ""
   };
 
+  componentDidMount = () =>{
+    this.fetchAlbum(194219022);
+  }
+
   fetchAlbum = (id) => {
     fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + id, {
       method: "GET",
@@ -18,7 +22,9 @@ class AlbumInfo extends Component {
   };
 
   render() {
+    console.log(this.state.album)
     return (
+      
       <div className="album row bootstrapOverwrite">
         <div className="col-12 col-md-6 col-lg-4">
           <img
