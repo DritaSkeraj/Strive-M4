@@ -1038,3 +1038,8 @@ li {
 .dropdown-menu > .dropdown-item:hover{
   background-color: #000;
 }
+
+.bootstrapOverwrite{
+  margin-right: 0px !important; 
+  margin-left: 0px !important;
+}

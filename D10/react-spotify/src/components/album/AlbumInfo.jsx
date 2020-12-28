@@ -4,7 +4,7 @@ import "../../styles/albums.css";
 class AlbumInfo extends Component {
     render() {
         return (
-            <div className='album row'>
+            <div className='album row bootstrapOverwrite'>
                   <div className='col-12 col-md-6 col-lg-4'>
                     <img className='album-cover img-fluid' src='http://placehold.it/80x80' alt='bohemian rhapsody' />
                   </div>
