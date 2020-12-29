@@ -11,7 +11,7 @@ class AlbumPlaylist extends Component {
   };
 
   componentDidMount = () => {
-    this.fetchAlbum(194219022);
+    this.fetchAlbum(this.props.albumId);
   };
 
   fetchAlbum = (id) => {

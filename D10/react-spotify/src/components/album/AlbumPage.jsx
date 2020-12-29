@@ -8,6 +8,11 @@ import { Row, Col } from "react-bootstrap";
 import '../../styles/styles.css';
 
 class AlbumPage extends Component {
+
+  state = {
+    albumId: '194219022'
+  }
+
   render() {
     return (
       <div>
@@ -15,8 +20,8 @@ class AlbumPage extends Component {
           <div className='mainframe'>
             <div className='main-content'>
             <AlbumHeader />
-              <AlbumInfo />
-              <AlbumPlaylist />
+              <AlbumInfo albumId={this.state.albumId}/>
+              <AlbumPlaylist albumId={this.state.albumId}/>
             </div>
           </div>
           <Player />

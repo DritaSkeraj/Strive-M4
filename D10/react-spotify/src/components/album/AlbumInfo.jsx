@@ -9,7 +9,7 @@ class AlbumInfo extends Component {
   };
 
   componentDidMount = () =>{
-    this.fetchAlbum(194219022);
+    this.fetchAlbum(this.props.albumId);
   }
 
   fetchAlbum = (id) => {
@@ -68,7 +68,7 @@ class AlbumInfo extends Component {
                 {this.state.album.artist.name}
               </a>
             </h6>
-            <p className="album-length">{this.state.album.release_date.slice(0, 4)} • 
+            <p className="album-length">{this.state.album.release_date.slice(0, 4)} •  
             {this.state.album.tracks.data.length} songs, 
             {this.toMinutes(this.state.album.duration)} </p>
           </div>
