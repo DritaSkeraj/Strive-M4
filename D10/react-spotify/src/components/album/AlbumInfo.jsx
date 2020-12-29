@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "../../styles/albums.css";
 import { Spinner } from "react-bootstrap";
+import { ColorExtractor } from "react-color-extractor";
 
 class AlbumInfo extends Component {
   state = {
     album: "",
-    loading: 'true'
+    loading: 'true',
+    colors: []
   };
 
   componentDidMount = () =>{
@@ -35,16 +37,28 @@ class AlbumInfo extends Component {
     return " " + hDisplay + mDisplay;
     }
 
+
+    getColors = (colors) =>
+    this.setState((state) => ({ colors: [...state.colors, ...colors] }));
+
+
   render() {
+
     console.log(this.state.album)
     return (
       <>
+
+      <ColorExtractor getColors={this.getColors}>
+        <img src={this.state.album.cover_big} style={{display: 'none' }} />
+      </ColorExtractor>
+      {console.log("COLORS:::::::", this.state.colors)}
+
       {this.state.loading ? (
         <div>
           <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
         </div>
       ) : (
-      <div className="album row bootstrapOverwrite">
+      <div className="album row bootstrapOverwrite" style={{backgroundColor: this.state.colors[0]}}>
         <div className="col-12 col-md-6 col-lg-4">
           <img
             className="album-cover img-fluid"
@@ -52,6 +66,7 @@ class AlbumInfo extends Component {
             alt={this.state.album.title}
           />
         </div>
+
 
         <div className="album-details col-12 col-md-6 col-lg-8">
           <h4 className="mt-2">albums</h4>
@@ -61,7 +76,7 @@ class AlbumInfo extends Component {
             <img
               src={this.state.album.artist.picture_small}
               alt="artist"
-              className="group-img"
+              className="group-img mr-2"
             />
             <h6>
               <a href="../artist-page.html" className="group-name">

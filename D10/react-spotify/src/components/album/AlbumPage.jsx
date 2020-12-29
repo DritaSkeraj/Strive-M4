@@ -19,7 +19,7 @@ class AlbumPage extends Component {
           <Menu />
           <div className='mainframe'>
             <div className='main-content'>
-            <AlbumHeader />
+              <AlbumHeader albumId={this.state.albumId}/>
               <AlbumInfo albumId={this.state.albumId}/>
               <AlbumPlaylist albumId={this.state.albumId}/>
             </div>

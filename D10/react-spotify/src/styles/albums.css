@@ -20,7 +20,7 @@
 
 .album.row{
   padding-top: 5em;
-  background: #55164f !important;
+  background: #55164f;
   height: 400px !important;
   width: 100%;
 }
@@ -35,14 +35,12 @@
   right: 0px;
 }
 .album-header {
-  background-color: transparent;
   display: flex;
   flex-direction: row;
   padding: 10px 20px 10px 20px;
   position: fixed;
   width: 100%;
   z-index: 44444444444444444;
-  background-color: #55164f;
   height: 60px;
 }
 .arrow-container {
@@ -176,17 +174,7 @@
   font-size: 14px;
   letter-spacing: 0.5px;
 }
-.playlist {
-  background: rgb(18, 18, 18);
-  background: linear-gradient(
-    0deg,
-    rgba(18, 18, 18, 1) 0%,
-    rgba(18, 18, 18, 0.9752275910364145) 36%,
-    rgba(18, 18, 18, 0.9192051820728291) 84%,
-    rgba(92, 24, 85, 0.8603816526610644) 100%
-  );
-  padding: 20px 40px;
-}
+
 .playlist-btns img {
   padding: 10px;
 }

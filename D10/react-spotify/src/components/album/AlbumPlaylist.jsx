@@ -3,11 +3,13 @@ import "../../styles/albums.css";
 import { BsFillPlayFill, BsHeart, BsThreeDots, BsClock} from "react-icons/bs";
 import {AiFillPlayCircle} from 'react-icons/ai';
 import { Spinner, Row, Col } from "react-bootstrap";
+import { ColorExtractor } from "react-color-extractor";
 
 class AlbumPlaylist extends Component {
   state = {
     album: "",
     loading: "true",
+    colors: []
   };
 
   componentDidMount = () => {
@@ -45,9 +47,41 @@ class AlbumPlaylist extends Component {
     return " " + hDisplay + mDisplay + sDisplay;
   };
 
+  playlist = {
+      background: `linear-gradient(
+        0deg,
+        rgba(18, 18, 18, 1) 0%,
+        rgba(18, 18, 18, 0.9752275910364145) 36%,
+        rgba(18, 18, 18, 0.9192051820728291) 84%,
+        ${this.state.colors[0]} 100%
+      )`,
+      padding: '20px 40px'
+  }
+
+  getColors = (colors) => {
+    this.setState((state) => ({ colors: [...state.colors, ...colors] }));
+  };
+
   render() {
     return (
-      <div className="playlist">
+      <>
+
+      <ColorExtractor getColors={this.getColors}>
+          <img src={this.state.album.cover_big} style={{ display: "none" }} />
+        </ColorExtractor>
+        {console.log("PLAYLIST COLORS:::::::", this.state.colors)}
+
+
+      <div style={{
+        background: `linear-gradient(
+          0deg,
+          rgba(18, 18, 18, 1) 0%,
+          rgba(18, 18, 18, 0.9752275910364145) 36%,
+          rgba(18, 18, 18, 0.9192051820728291) 84%,
+          ${this.state.colors[0]} 100%
+        )`,
+        padding: '20px 40px'
+    }}>
         <div className="playlist-btns mt-3 mb-3">
           <AiFillPlayCircle className="play_btn"/>
           <BsHeart className="heart-dots"/>
@@ -145,6 +179,7 @@ class AlbumPlaylist extends Component {
           Music BV
         </p>
       </div>
+      </>
     );
   }
 }
