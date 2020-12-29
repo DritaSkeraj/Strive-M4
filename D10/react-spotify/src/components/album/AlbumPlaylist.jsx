@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../../styles/albums.css";
-import { BsFillPlayFill } from "react-icons/bs";
-import { Spinner } from "react-bootstrap";
+import { BsFillPlayFill, BsHeart, BsThreeDots, BsClock} from "react-icons/bs";
+import {AiFillPlayCircle} from 'react-icons/ai';
+import { Spinner, Row, Col } from "react-bootstrap";
 
 class AlbumPlaylist extends Component {
   state = {
@@ -48,9 +49,9 @@ class AlbumPlaylist extends Component {
     return (
       <div className="playlist">
         <div className="playlist-btns mt-3 mb-3">
-          <i className="fas fa-pause-circle fa-3x"></i>
-          <i className="far fa-heart fa-2x mr-3 ml-3"></i>
-          <i className="fa fa-ellipsis-h fa-2x"></i>
+          <AiFillPlayCircle className="play_btn"/>
+          <BsHeart className="heart-dots"/>
+          <BsThreeDots className="heart-dots"/>
         </div>
         <div className="playlist-table">
           <table className="table table-borderless">
@@ -60,16 +61,20 @@ class AlbumPlaylist extends Component {
                   <span># </span>
                 </th>
                 <th scope="col th-lg" style={{ paddingLeft: "50px" }}>
-                  Title
+                  Track Title
                 </th>
                 <th scope="col th-sm">
-                  <i className="far fa-clock"></i>
+                  Rank
+                </th>
+                <th scope="col th-sm">
+                  <BsClock/>
                 </th>
                 <div
                   style={{ borderBottom: "1px solid #b3b3b3", width: "90%" }}
                 ></div>
               </tr>
             </thead>
+            
             <tbody>
               {this.state.loading ? (
                 <div>
@@ -94,7 +99,7 @@ class AlbumPlaylist extends Component {
                         className="track-num"
                         style={{ width: "30px !important" }}
                       >
-                        {key}{" "}
+                        {key+1}{" "}
                       </span>
                       <BsFillPlayFill
                         onclick="printInnerText()"
@@ -111,6 +116,11 @@ class AlbumPlaylist extends Component {
                           {track.artist.name}
                         </li>
                       </ul>
+                    </td>
+                    <td style={{ verticalAlign: "middle" }}>
+                      <p className='group'>
+                        {track.rank}
+                      </p>
                     </td>
                     <td style={{ verticalAlign: "middle" }}>
                       <img

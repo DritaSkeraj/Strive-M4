@@ -274,10 +274,10 @@ th {
 .playlist-table tr {
   background-color: transparent;
   transition-property: background-color;
-  transition-duration: 5s;
-  transition-delay: 2s;
+  transition-duration: 0.2s;
+  transition-delay: 0.1s;
 }
-.playlist-table tbody tr:hover::after {
+/* .playlist-table tbody tr:hover::after {
   color: white !important;
   border-radius: 4px;
   content: "";
@@ -288,6 +288,10 @@ th {
   left: 1vw;
   background-color: #50505050;
   transition-delay: 2s !important;
+} */
+
+tbody tr:hover{
+  background-color: #50505050;
 }
 .track-num {
   font-size: 1rem;
@@ -1048,4 +1052,17 @@ li {
 .bootstrapOverwrite{
   margin-right: 0px !important; 
   margin-left: 0px !important;
+}
+
+.play_btn{
+  color: #1DB954;
+  font-size: 4em;
+  margin: 0.2em;
+}
+
+.heart-dots{
+  font-size: 2.4em;
+  font-weight: 50;
+  color: white;
+  margin: 0.2em;
 }
