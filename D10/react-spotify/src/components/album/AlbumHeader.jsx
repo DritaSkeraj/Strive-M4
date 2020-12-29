@@ -27,10 +27,10 @@ class AlbumHeader extends Component {
 
           <Nav style={{ marginTop: "-0.5em"}}>
             <NavDropdown
-              eventKey={1}
+              eventkey={1}
               title={
                 <button
-                  class="profile-btn dropdown-toggle dropdown"
+                  className="profile-btn dropdown-toggle dropdown"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -46,7 +46,7 @@ class AlbumHeader extends Component {
               }
             >
               <NavDropdown.Item
-                eventKey={1.1}
+                eventkey={1.1}
                 style={{
                   color: "white",
                   textAlign: "center",
@@ -55,7 +55,7 @@ class AlbumHeader extends Component {
                 User
               </NavDropdown.Item>
               <NavDropdown.Item
-                eventKey={1.3}
+                eventkey={1.3}
                 style={{
                   color: "white",
                   textAlign: "center",
@@ -64,7 +64,7 @@ class AlbumHeader extends Component {
                 Account
               </NavDropdown.Item>
               <NavDropdown.Item
-                eventKey={1.3}
+                eventkey={1.3}
                 style={{
                   color: "white",
                   textAlign: "center",

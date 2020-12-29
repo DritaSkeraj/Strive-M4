@@ -69,21 +69,19 @@ class AlbumPlaylist extends Component {
                 <th scope="col th-sm">
                   <BsClock/>
                 </th>
-                <div
-                  style={{ borderBottom: "1px solid #b3b3b3", width: "90%" }}
-                ></div>
+                {/*<div
+                 // style={{ borderBottom: "1px solid #b3b3b3", width: "90%" }}
+                ></div>*/}
               </tr>
             </thead>
             
             <tbody>
               {this.state.loading ? (
-                <div>
                   <Spinner
                     animation="grow"
                     variant="light"
                     className="mt-3 albums-spinner"
                   />
-                </div>
               ) : (
                 this.state.album.tracks.data.map((track, key) => (
                   <tr onclick="printInnerText(this)">
