@@ -174,6 +174,9 @@
   font-size: 14px;
   letter-spacing: 0.5px;
 }
+.playlist-btns{
+  margin-top: 5em !important;
+}
 
 .playlist-btns img {
   padding: 10px;
@@ -419,7 +422,7 @@ tr:hover .track-play {
     /* margin-top: 150px; */
   }
   .album-details {
-    margin-top: -90px;
+    /* margin-top: -90px; */
     padding-top: 0px;
   }
   .playlist-table tr:hover::after {
@@ -435,7 +438,7 @@ tr:hover .track-play {
     margin-top: 10px;
   }
   .album-details {
-    margin-top: -90px;
+    /* margin-top: -90px; */
     padding-top: 0px;
   }
   .user-icon {

@@ -69,11 +69,11 @@ class AlbumInfo extends Component {
         </div>
         </Row>
         <Row>
-        <div className="album-details col-12 col-md-6 col-lg-8">
+        <div className="album-details">
           <h4 className="mt-2">albums</h4>
           <h2>{this.state.album.title}</h2>
           <h5>({this.state.album.label})</h5>
-          <div className="mt-4 last-line">
+          <div className="last-line" >
             <img
               src={this.state.album.artist.picture_small}
               alt="artist"
