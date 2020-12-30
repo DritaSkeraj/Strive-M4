@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/albums.css";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Row } from "react-bootstrap";
 import { ColorExtractor } from "react-color-extractor";
 
 class AlbumInfo extends Component {
@@ -59,15 +59,16 @@ class AlbumInfo extends Component {
         </div>
       ) : (
       <div className="album row bootstrapOverwrite" style={{backgroundColor: this.state.colors[0]}}>
-        <div className="col-12 col-md-6 col-lg-4">
+      <Row>
+        <div>
           <img
             className="album-cover img-fluid"
             src={this.state.album.cover_big}
             alt={this.state.album.title}
           />
         </div>
-
-
+        </Row>
+        <Row>
         <div className="album-details col-12 col-md-6 col-lg-8">
           <h4 className="mt-2">albums</h4>
           <h2>{this.state.album.title}</h2>
@@ -88,6 +89,7 @@ class AlbumInfo extends Component {
             {this.toMinutes(this.state.album.duration)} </p>
           </div>
         </div>
+        </Row>
       </div>
       )}
       </>

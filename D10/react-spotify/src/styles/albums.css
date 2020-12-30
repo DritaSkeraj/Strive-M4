@@ -416,7 +416,7 @@ tr:hover .track-play {
     height: 430px;
   }
   .album-cover {
-    margin-top: 150px;
+    /* margin-top: 150px; */
   }
   .album-details {
     margin-top: -90px;

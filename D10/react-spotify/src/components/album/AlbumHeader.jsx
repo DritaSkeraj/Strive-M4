@@ -69,7 +69,7 @@ class AlbumHeader extends Component {
               </button>
             </a>
 
-            <Nav style={{ marginTop: "-0.5em" }}>
+            <Nav style={{ marginTop: "-0.5em", paddingLeft: '0px', paddingRight: '0px' }}>
               <NavDropdown
                 eventkey={1}
                 title={
@@ -80,6 +80,7 @@ class AlbumHeader extends Component {
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    style={{paddingLeft: '10px', paddingRight: '10px'}}
                   >
                     <span className="user-icon">
                       <AiOutlineUser style={{ fontSize: "1.5em" }} />
