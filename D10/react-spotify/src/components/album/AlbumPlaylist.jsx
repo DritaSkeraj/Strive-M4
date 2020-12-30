@@ -183,5 +183,4 @@ class AlbumPlaylist extends Component {
     );
   }
 }
-
 export default AlbumPlaylist;

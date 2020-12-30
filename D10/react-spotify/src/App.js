@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
         <Route path='/login' exact component={Login} />
-        <Route path='/'  component={AsideMenu} />
+        <Route path='/' exact component={AsideMenu} />
         <Route path='/' exact component={Player} />
         <Route path='/' exact component={HomeContent} />
         <Route path='/albumPage' exact component={AlbumPage} />

@@ -1017,6 +1017,7 @@ li {
 /*header*/
 .dropdown-toggle::after{
   display: none !important;
+  content: none !important;
 }
 
 .dropdown-menu.show {

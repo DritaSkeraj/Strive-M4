@@ -94,5 +94,4 @@ class AlbumInfo extends Component {
     );
   }
 }
-
 export default AlbumInfo;

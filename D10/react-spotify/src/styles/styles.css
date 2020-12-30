@@ -758,7 +758,7 @@ h6 > a:hover {
 .container-xl {
   width: 100%;
   padding-left: 25px;
-  margin-left: 230px;
+  /* margin-left: 230px; */
   max-width: calc(100vw - 232px);
   position: fixed;
   top: 0px;

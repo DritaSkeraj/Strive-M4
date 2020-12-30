@@ -124,5 +124,4 @@ class AlbumHeader extends Component {
     );
   }
 }
-
 export default AlbumHeader;
