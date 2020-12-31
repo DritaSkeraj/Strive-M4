@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../styles/albums.css";
 import { Spinner, Row } from "react-bootstrap";
 import { ColorExtractor } from "react-color-extractor";
+import { AiOutlineInsertRowAbove } from "react-icons/ai";
 
 class AlbumInfo extends Component {
   state = {
@@ -58,7 +59,7 @@ class AlbumInfo extends Component {
           <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
         </div>
       ) : (
-      <div className="album row bootstrapOverwrite" style={{backgroundColor: this.state.colors[0]}}>
+      <div className="album row bootstrapOverwrite" style={{backgroundColor: this.state.colors[0], paddingLeft: '40px'}}>
       <Row>
         <div>
           <img
@@ -69,11 +70,11 @@ class AlbumInfo extends Component {
         </div>
         </Row>
         <Row>
-        <div className="album-details">
+        <div className="album-details mt-3">
           <h4 className="mt-2">albums</h4>
           <h2>{this.state.album.title}</h2>
           <h5>({this.state.album.label})</h5>
-          <div className="last-line" >
+          <div className="last-line mt-2 mb-2" >
             <img
               src={this.state.album.artist.picture_small}
               alt="artist"
@@ -90,6 +91,7 @@ class AlbumInfo extends Component {
           </div>
         </div>
         </Row>
+        <hr/>
       </div>
       )}
       </>

@@ -82,7 +82,7 @@ class AlbumPlaylist extends Component {
         )`,
         padding: '20px 40px'
     }}>
-        <div className="playlist-btns mt-3 mb-3">
+        <div className="playlist-btns mb-3">
           <AiFillPlayCircle className="play_btn"/>
           <BsHeart className="heart-dots"/>
           <BsThreeDots className="heart-dots"/>
