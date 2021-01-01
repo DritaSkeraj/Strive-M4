@@ -9,34 +9,37 @@ import backgroundImg from "../../assets/rock-concert.jpg";
 import SingleSong from "../SingleSong";
 
 class ArtistPage extends Component {
-
   state = {
-    albums: '',
-    loading: true
-  }
+    albums: "",
+    loading: true,
+    finalAlbums: [],
+  };
 
   componentDidMount = () => {
-    this.fetchAlbums('coldplay');
-  }
+    this.fetchAlbums("coldplay");
+  };
 
   fetchAlbums = (artist) => {
-    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+artist, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
-      }
-    },
-    this.setState({loading: true})
+    fetch(
+      "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
+          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      },
+      this.setState({ loading: true })
     )
-    .then(response => response.json())
-    .then((fetchedAlbum) =>
+      .then((response) => response.json())
+      .then((fetchedAlbum) =>
         this.setState({ albums: fetchedAlbum, loading: false })
-    )
-    .catch(err => {
-      console.error(err);
-    });
-  }
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   render() {
     return (
@@ -192,24 +195,32 @@ class ArtistPage extends Component {
               >
                 <h1>Albums</h1>
                 <div className="row no-gutters">
-                 
-        {
-          this.state.loading ? (<p>loading...</p>) : (
-            <>
-            {this.state.albums.data.map((album, key) => {
-              //console.log(album.album.title)
-              return <SingleSong image={album.album.cover} title={album.album.title}/>
-            })}
-            </>
-          )
-          }
+                  {this.state.loading ? (
+                    <p>loading...</p>
+                  ) : (
+                    <>
+                      {this.state.albums.data.map((album, key) => {
+                        //console.log(album.album.title)
+                        //return <SingleSong image={album.album.cover} title={album.album.title}/>
+                      })}
+                      {
+                        this.state.albums.data.forEach(element => {
+                          console.log("element::::::::::", element.album);
+                          if(this.state.finalAlbums.includes(element.album)){
+                            console.log("album already pushed to final array. finalAlbum includes ", element.album)
+                          } else {
+                            this.setState({finalAlbums: [...this.state.finalAlbums, element.album]})
+                            console.log('it should be added now')
+                          }
+                        })
+                      }
+                    </>
+                  )}
                 </div>
-
               </div>
             </div>
           </div>
         </section>
-         
 
         <Player />
       </>
