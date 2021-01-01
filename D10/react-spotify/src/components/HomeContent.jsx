@@ -8,6 +8,7 @@ import React from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import "../styles/styles.css";
 import HomeNavigationMenu from "./HomeNavigationMenu";
+import SingleSong from './SingleSong';
 
 class HomeContent extends React.Component {
   state = {
@@ -62,7 +63,7 @@ class HomeContent extends React.Component {
         <section className="mainframe">
           <div
             className="main-content d-flex flex-column"
-            style={{ overflowX: "hidden" }}
+            style={{ overflowX: "hidden", marginBottom: '15em', height: '90vh' }}
           >
             <div className="justify-content-center" style={{marginBottom: '-7rem !important'}}>
               <HomeNavigationMenu />
@@ -74,44 +75,14 @@ class HomeContent extends React.Component {
               </div>
             ) : (
               albums.map((category) => (
-                <>
+                <div>
                   <h4 className="artist-name">{category.name}</h4>
                   <Row>
                     {category.data.map((album) => (
-                      <div>
-                        <Col>
-                          <div className="trending card p-0 col-12 col-md-3 col-lg-2 mr-4 ml-4 mt-5 mb-5">
-                            <img
-                              className="card-img-top"
-                              src={album.album.cover}
-                              alt="spotify_playlist_1"
-                            />
-
-                            <span className="overlay-icons" style={{'margin': '0 auto'}}>
-                              <FontAwesomeIcon
-                                icon={faHeart}
-                                className="heart-outline mr-3"
-                              />
-                              <FontAwesomeIcon
-                                icon={faPlay}
-                                className="play mr-3"
-                              />
-                              <FontAwesomeIcon
-                                icon={faEllipsisH}
-                                className="mr-3"
-                              />
-                            </span>
-                            <div>
-                              <h6 style={{ position: "relative", top: "1rem" }}>
-                                {album.title}
-                              </h6>
-                            </div>
-                          </div>
-                        </Col>
-                      </div>
+                      <SingleSong image={album.album.cover} title={album.title}/>
                     ))}
                   </Row>
-                </>
+                </div>
               ))
             )}
           </div>
