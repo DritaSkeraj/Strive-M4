@@ -19,11 +19,11 @@ class ArtistPage extends Component {
               </div>
             </div>*/}
 
-        <section className="mainframe"  style={{overflowY: 'auto !important'}}>
-          <div className="main-content" style={{overflowY: 'auto !important'}}>
+        <section className="mainframe">
+          <div className="main-content" style={{overflowY: 'hidden !important'}}>
             <img src={backgroundImg} />
-            <div style={{overflowY: 'auto !important'}}>
-            <div className="container mt-3 justify-center">
+            <div>
+            <div className="container mt-3 justify-center" style={{position: 'relative'}}>
               <div className="jumbotron d-flex justify-content-center flex-column">
                 <h6>33,000,575 MONTHLY LISTENERS</h6>
                 <h1 className="display-4">Queen</h1>
@@ -54,11 +54,12 @@ class ArtistPage extends Component {
               </div>
             </div>
                         
-            <div style={{marginTop: '18em !important', position: 'relative', top: '10em !important', display: 'block', }}>
+            <div style={{marginTop: '18em !important'}}>
               <ul
                 className="nav nav-tabs justify-content-center"
                 id="myTab"
                 role="tablist" 
+                style={{marginTop: '18em !important'}}
               >
                 <li className="nav-item d-none d-md-flex" role="presentation">
                   <a
@@ -144,14 +145,14 @@ class ArtistPage extends Component {
 
             </div>
             
-            <div className="container" style={{display: 'block', marginTop: '22em'}}>
+            <div className="container" style={{display: 'block', position: 'relative', marginBottom: '10em'}}>
               <h1>Albums</h1>
 
               <div className="row no-gutters">
                 <div className="trending card col-12 col-md-3 col-lg-2 mb-4">
                   <img
                     className="card-img-top"
-                    src="images/queen_1.png"
+                    src={backgroundImg}
                     alt="spotify_playlist_1"
                   />
                   <i className="spotify-card-icon fab fa-spotify"></i>
@@ -174,7 +175,7 @@ class ArtistPage extends Component {
               <div className="trending card col-12 col-md-3 col-lg-2 mb-4">
                 <img
                   className="card-img-top"
-                  src="images/queen_6.png"
+                  src={backgroundImg}
                   alt="spotify_playlist_1"
                 />
                 <i className="spotify-card-icon fab fa-spotify"></i>
