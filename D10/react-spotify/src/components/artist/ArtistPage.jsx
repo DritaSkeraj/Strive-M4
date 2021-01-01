@@ -9,16 +9,39 @@ import backgroundImg from "../../assets/rock-concert.jpg";
 import SingleSong from "../SingleSong";
 
 class ArtistPage extends Component {
+
+  state = {
+    albums: '',
+    loading: true
+  }
+
+  componentDidMount = () => {
+    this.fetchAlbums('coldplay');
+  }
+
+  fetchAlbums = (artist) => {
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+artist, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+      }
+    },
+    this.setState({loading: true})
+    )
+    .then(response => response.json())
+    .then((fetchedAlbum) =>
+        this.setState({ albums: fetchedAlbum, loading: false })
+    )
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
   render() {
     return (
       <>
         <Menu />
-        {/*<div className='mainframe'>
-              <div className='main-content'>
-                <Row><ArtistHeader/></Row>
-                <Row><ArtistAlbums/></Row>
-              </div>
-            </div>*/}
 
         <section className="mainframe">
           <div
@@ -168,20 +191,25 @@ class ArtistPage extends Component {
                 }}
               >
                 <h1>Albums</h1>
-
                 <div className="row no-gutters">
-                  <SingleSong image={backgroundImg} title="Bohemian Rhapsody"/>
+                 
+        {
+          this.state.loading ? (<p>loading...</p>) : (
+            <>
+            {this.state.albums.data.map((album, key) => {
+              //console.log(album.album.title)
+              return <SingleSong image={album.album.cover} title={album.album.title}/>
+            })}
+            </>
+          )
+          }
                 </div>
 
-                <h1 className="mt-5">Appears On</h1>
-
-                <div className="row no-gutters">
-                  <SingleSong image={backgroundImg} title="I want to break free"/>
-                </div>
               </div>
             </div>
           </div>
         </section>
+         
 
         <Player />
       </>
