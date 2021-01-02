@@ -4,7 +4,7 @@ import Player from "../Player";
 import Menu from "../album/Menu";
 import ArtistHeader from "./ArtistHeader";
 import ArtistAlbums from "./ArtistAlbums";
-import { Row } from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 import backgroundImg from "../../assets/rock-concert.jpg";
 import SingleSong from "../SingleSong";
 
@@ -196,12 +196,14 @@ class ArtistPage extends Component {
                 <h1>Albums</h1>
                 <div className="row no-gutters">
                   {this.state.loading ? (
-                    <p>loading...</p>
+                    <>
+                      <Spinner animation="grow" variant="light" style={{margin: '0 auto', display: 'flex', justifyContent: 'center'}}/>
+                    </>
                   ) : (
                     <>
                       {this.state.albums.data.map((album, key) => {
                         //console.log(album.album.title)
-                        //return <SingleSong image={album.album.cover} title={album.album.title}/>
+                        return <SingleSong image={album.album.cover} title={album.album.title}/>
                       })}
                       {
                         this.state.albums.data.forEach(element => {
