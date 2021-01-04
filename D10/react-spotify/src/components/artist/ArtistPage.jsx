@@ -15,8 +15,12 @@ class ArtistPage extends Component {
     finalAlbums: [],
   };
 
+  filteredAlbums = [];
+
   componentDidMount = () => {
     this.fetchAlbums("coldplay");
+    this.setState({finalAlbums: this.filteredAlbums});
+    
   };
 
   fetchAlbums = (artist) => {
@@ -40,6 +44,11 @@ class ArtistPage extends Component {
         console.error(err);
       });
   };
+
+  albumIndex = () => {
+    let parachutesIndex = this.filteredAlbums.findIndex(album => album.album.title === "Parachutes")
+    console.log("parachutesIndex:::::::", parachutesIndex);
+  }
 
   render() {
     return (
@@ -197,23 +206,30 @@ class ArtistPage extends Component {
                 <div className="row no-gutters">
                   {this.state.loading ? (
                     <>
-                      <Spinner animation="grow" variant="light" style={{margin: '0 auto', display: 'flex', justifyContent: 'center'}}/>
+                      <Spinner
+                        animation="grow"
+                        variant="light"
+                        style={{
+                          margin: "0 auto",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      />
                     </>
                   ) : (
                     <>
-                      {this.state.albums.data.map((album, key) => {
-                        //console.log(album.album.title)
-                        return <SingleSong image={album.album.cover} title={album.album.title}/>
-                      })}
+                    {this.albumIndex() != -1 ? console.log()}
                       {
-                        this.state.albums.data.forEach(element => {
-                          console.log("element::::::::::", element.album);
-                          if(this.state.finalAlbums.includes(element.album)){
-                            console.log("album already pushed to final array. finalAlbum includes ", element.album)
-                          } else {
-                            this.setState({finalAlbums: [...this.state.finalAlbums, element.album]})
-                            console.log('it should be added now')
-                          }
+                        this.state.albums.data.map((album, key) => {
+                          return (
+                            
+                            <>
+                            <SingleSong
+                              image={album.album.cover}
+                              title={album.album.title}
+                            />
+                            </>
+                          );
                         })
                       }
                     </>
