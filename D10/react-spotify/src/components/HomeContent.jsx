@@ -19,7 +19,7 @@ class HomeContent extends React.Component {
   };
 
   componentDidMount = async () => {
-    const promiseArray = this.state.artists.map(async (artist) => {
+    const promiseArray = this.state.artists.map(async (artist, key) => {
       const result = await this.fetchArtist(artist);
       return {
         name: artist.toUpperCase(),
@@ -59,7 +59,7 @@ class HomeContent extends React.Component {
   render() {
     const { loading, albums } = this.state;
     return (
-      <div style={{ overflowY: "auto" }} class="homeContent">
+      <div style={{ overflowY: "auto" }} className="homeContent">
         <section className="mainframe">
           <div
             className="main-content d-flex flex-column"
@@ -74,11 +74,11 @@ class HomeContent extends React.Component {
                 <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
               </div>
             ) : (
-              albums.map((category) => (
+              albums.map((category, key) => (
                 <div>
                   <h4 className="artist-name">{category.name}</h4>
                   <Row>
-                    {category.data.map((album) => (
+                    {category.data.map((album, key) => (
                       <SingleSong image={album.album.cover} title={album.title}/>
                     ))}
                   </Row>

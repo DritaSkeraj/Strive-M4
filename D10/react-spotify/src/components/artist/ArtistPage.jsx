@@ -11,16 +11,13 @@ import SingleSong from "../SingleSong";
 class ArtistPage extends Component {
   state = {
     albums: "",
+    artistName: "",
+    numOfFans: 0,
     loading: true,
-    finalAlbums: [],
   };
 
-  filteredAlbums = [];
-
   componentDidMount = () => {
-    this.fetchAlbums("coldplay");
-    this.setState({finalAlbums: this.filteredAlbums});
-    
+    this.fetchAlbums("pink floyd");    
   };
 
   fetchAlbums = (artist) => {
@@ -45,12 +42,8 @@ class ArtistPage extends Component {
       });
   };
 
-  albumIndex = () => {
-    let parachutesIndex = this.filteredAlbums.findIndex(album => album.album.title === "Parachutes")
-    console.log("parachutesIndex:::::::", parachutesIndex);
-  }
-
   render() {
+
     return (
       <>
         <Menu />
@@ -62,13 +55,26 @@ class ArtistPage extends Component {
           >
             <img src={backgroundImg} />
             <div>
+            
               <div
                 className="container mt-3 justify-center"
                 style={{ position: "relative" }}
               >
                 <div className="jumbotron d-flex justify-content-center flex-column">
-                  <h6>33,000,575 MONTHLY LISTENERS</h6>
-                  <h1 className="display-4">Queen</h1>
+                {this.state.loading ? (
+                    <Spinner
+                      animation="grow"
+                      variant="light"
+                      style={{
+                        margin: "0 auto",
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    />
+                ) : (
+                  <div>
+                    <h1 className="display-4">{this.state.albums.data[0].artist.name}</h1>
+                  </div>)}
                   <div className="d-flex d-md-none  row">
                     <a
                       className="artist-pg-play-btn btn"
@@ -218,20 +224,22 @@ class ArtistPage extends Component {
                     </>
                   ) : (
                     <>
-                    {this.albumIndex() != -1 ? console.log()}
-                      {
-                        this.state.albums.data.map((album, key) => {
-                          return (
-                            
-                            <>
+                    {
+                      this.state.albums.data && this.state.albums.data.map((album, key) => {
+                        // let index = this.albumIndex(album.album.title);
+                        let index = this.state.albums.data.findIndex(track => track.album.title === album.album.title)
+                        //console.log("inside render:::", album.album.title, ":::index:::", index, ":::key:::", key);
+                        if(index === key){
+                          return(<>
                             <SingleSong
                               image={album.album.cover}
                               title={album.album.title}
                             />
-                            </>
-                          );
-                        })
-                      }
+                          {console.log("-------------Album-----------", album.album.title)}
+                          </>);
+                        }
+                      })
+                    }
                     </>
                   )}
                 </div>
