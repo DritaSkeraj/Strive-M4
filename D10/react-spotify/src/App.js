@@ -9,6 +9,7 @@ import HomeContent from './components/HomeContent';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import AlbumPage from "./components/album/AlbumPage";
 import ArtistPage from "./components/artist/ArtistPage";
+import SearchPage from "./components/search/SearchPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' exact component={HomeContent} />
         <Route path='/albumPage' exact component={AlbumPage} />
         <Route path='/artistPage' exact component={ArtistPage} />
+        <Route path='/search' exact component={SearchPage} />
     </Router>
   );
 }
