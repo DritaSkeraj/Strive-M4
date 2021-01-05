@@ -44,6 +44,7 @@
     background-color: blueviolet;
     /* background: linear-gradient(0deg,transparent,rgba(0,0,0,.4)); */
     padding: 10px;
+    clip-path: inset(0 0 0 0);
 }
 .cardHolder h5{
     margin: 0.5em;
