@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Downshift from "downshift";
-import '../../styles/search.css';
-import {BsMusicNote} from 'react-icons/bs';
-import {Row, Col} from 'react-bootstrap';
+import "../../styles/search.css";
+import { BsMusicNote } from "react-icons/bs";
+import { Row, Col } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       artists: [],
-      searchedArtist: ''
+      searchedArtist: "",
     };
 
     this.fetchArtists = this.fetchArtists.bind(this);
@@ -18,13 +19,13 @@ class Search extends Component {
   }
 
   async inputOnChange(event) {
-      let search = '';
+    let search = "";
     if (!event.target.value) {
       return;
     } else {
       await this.fetchArtists(event.target.value);
       search += event.target.value;
-      this.setState({searchedArtist: search})
+      this.setState({ searchedArtist: search });
     }
   }
 
@@ -45,11 +46,13 @@ class Search extends Component {
 
   fetchArtists = async (artist) => {
     try {
-      let response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+ artist,
+      let response = await fetch(
+        "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist,
         {
           headers: {
-            "x-rapidapi-key": "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
-		    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+            "x-rapidapi-key":
+              "a44588e47dmsh9b184d3ebdf2d08p1faa3djsn2e64ecb46487",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
           },
         }
       );
@@ -79,35 +82,51 @@ class Search extends Component {
         }) => (
           <div>
             <br />
-            <input type="text" className="searchInput"
+            <input
+              type="text"
+              className="searchInput"
               {...getInputProps({
-                placeholder: "Search for artists",
+                placeholder: "Search songs",
                 onChange: this.inputOnChange,
               })}
             />
             {isOpen ? (
               <div>
-                {this.state.artists.data && this.state.artists.data.slice(0, 5).map((item, index) => (
-                  <div style={{background: 'red'}}
-                    {...getItemProps({ key: index, index, item })}
-                    style={{
-                      backgroundColor:
-                        highlightedIndex === index ? "lightgray" : "white",
-                      fontWeight: selectedItem === item ? "bold" : "normal",
-                    }}
-                  >
-                    {item && (
-                      <>
-                        {/*<Row>
-                          
-                          <p style={{color: 'black', padding: '5px', marginTop: '0px', marginBottom: '0px'}}>
-                            <BsMusicNote style={{marginLeft: '10px', marginRight: '5px'}}/>
-                            {item.artist.name}
-                          </p>
-                        </Row>*/}</>
-                    )}
-                  </div>
-                ))}
+                {this.state.artists.data &&
+                  this.state.artists.data.slice(0, 5).map((item, index) => (
+                    <div
+                      style={{ background: "red" }}
+                      {...getItemProps({ key: index, index, item })}
+                      style={{
+                        backgroundColor:
+                          highlightedIndex === index ? "lightgray" : "white",
+                        fontWeight: selectedItem === item ? "bold" : "normal",
+                      }}
+                    >
+                      {item && (
+                        <Row className="pr-2 pl-2">
+                          <Link to={`/albumPage/${item.album.id}`}>
+                            <p
+                              style={{
+                                color: "black",
+                                padding: "5px 10px",
+                                marginTop: "0px",
+                                marginBottom: "0px",
+                              }}
+                            >
+                              <BsMusicNote
+                                style={{
+                                  marginLeft: "10px",
+                                  marginRight: "5px",
+                                }}
+                              />
+                              {item.artist.name} - {item.title}
+                            </p>
+                          </Link>
+                        </Row>
+                      )}
+                    </div>
+                  ))}
               </div>
             ) : null}
           </div>

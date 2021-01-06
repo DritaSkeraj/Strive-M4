@@ -111,11 +111,7 @@ class AlbumPlaylist extends Component {
             
             <tbody>
               {this.state.loading ? (
-                  <Spinner
-                    animation="grow"
-                    variant="light"
-                    className="mt-3 albums-spinner"
-                  />
+                <Spinner animation="grow" variant="light" className="mt-3 albums-spinner"/>
               ) : (
                 this.state.album.tracks.data.map((track, key) => (
                   <tr onclick="printInnerText(this)">
