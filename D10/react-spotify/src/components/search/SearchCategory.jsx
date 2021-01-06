@@ -18,8 +18,6 @@ class SearchCategory extends Component {
             <ColorExtractor getColors={this.getColors}>
                 <img src={this.props.img} style={{display: 'none' }} />
             </ColorExtractor>
-            {console.log("COLORS:::::::", this.state.colors)}
-
 
             <Col xs={12} md={4} lg={3}>
               <div className='cardHolder' style={{background: `${this.state.colors[0]}`,

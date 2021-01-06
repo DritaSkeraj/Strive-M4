@@ -24,8 +24,8 @@ class SearchPage extends Component {
         return (
             <div>
             <Menu />
-            <div className='mainframe'>
-              <div className='main-content' style={{overflowY: 'hidden', overflowX: 'hidden'}}>
+            <div className='search-mainframe'>
+              <div className='search-main-content'>
                <SearchHeader/>
                <div className="container">
                 <Row>

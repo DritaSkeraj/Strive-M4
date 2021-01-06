@@ -5,6 +5,7 @@ import { AiOutlineUser, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { Nav, NavDropdown, MenuItem } from "react-bootstrap";
+import Search from './Search'
 
 class SearchHeader extends Component {
     render() {
@@ -23,7 +24,8 @@ class SearchHeader extends Component {
 
                 <div className="search-input-holder">
                     <FiSearch style={{fontSize: '1.5em', marginLeft: '10px', marginRight: '10px', color: '#1F1F1F'}}/>
-                    <input type="text" className="searchInput" placeholder="Search for Artists, Songs or Podcasts" />
+                    {/*<input type="text" className="searchInput" placeholder="Search for Artists, Songs or Podcasts" />*/}
+                    <Search/>
                 </div>
       
                 <div className="header-btns">
