@@ -216,6 +216,10 @@ aside {
 }
 .login-button-index:hover span{
   color: #000;
+  text-decoration: none;
+}
+.login-button-index span:hover{
+  text-decoration: none !important;
 }
 .login-button-index {
   max-width: 400px;
