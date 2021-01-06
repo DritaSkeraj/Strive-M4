@@ -76,7 +76,7 @@ class HomeContent extends React.Component {
               </div>
             ) : (
               albums.map((category, key) => (
-                <div>
+                <div className='mb-5'>
                   <Link to={`/artistPage/${category.name}`}><h4 className="artist-name">{category.name}</h4></Link>
                   <Row>
                     {category.data.map((album, key) => (

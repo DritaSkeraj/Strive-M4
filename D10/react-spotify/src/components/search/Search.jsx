@@ -97,13 +97,14 @@ class Search extends Component {
                     }}
                   >
                     {item && (
-                        <Row>
+                      <>
+                        {/*<Row>
                           
                           <p style={{color: 'black', padding: '5px', marginTop: '0px', marginBottom: '0px'}}>
                             <BsMusicNote style={{marginLeft: '10px', marginRight: '5px'}}/>
-                            {item.artist.name} - {item.title}
+                            {item.artist.name}
                           </p>
-                        </Row>
+                        </Row>*/}</>
                     )}
                   </div>
                 ))}

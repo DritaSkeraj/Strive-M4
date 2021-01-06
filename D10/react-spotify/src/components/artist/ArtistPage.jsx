@@ -3,11 +3,10 @@ import "../../styles/styles.css";
 import Player from "../Player";
 import Menu from "../album/Menu";
 import ArtistHeader from "./ArtistHeader";
-import ArtistAlbums from "./ArtistAlbums";
 import { Row, Spinner } from "react-bootstrap";
 import backgroundImg from "../../assets/rock-concert.jpg";
 import SingleSong from "../SingleSong";
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 class ArtistPage extends Component {
   state = {
@@ -232,10 +231,12 @@ class ArtistPage extends Component {
                         //console.log("inside render:::", album.album.title, ":::index:::", index, ":::key:::", key);
                         if(index === key){
                           return(<>
+                            <Link to={`/albumPage/${album.album.id}`}>
                             <SingleSong
                               image={album.album.cover}
                               title={album.album.title}
                             />
+                            </Link>
                           {console.log("-------------Album-----------", album.album.title)}
                           </>);
                         }
