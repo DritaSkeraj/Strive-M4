@@ -98,8 +98,11 @@ class Search extends Component {
                   >
                     {item && (
                         <Row>
-                          <Col xs={1}><BsMusicNote style={{color: 'black !important'}}/></Col>
-                          <Col xs={10}><p style={{color: 'black', padding: '5px', marginTop: '0px', marginBottom: '0px'}}>{item.title}</p></Col>
+                          
+                          <p style={{color: 'black', padding: '5px', marginTop: '0px', marginBottom: '0px'}}>
+                            <BsMusicNote style={{marginLeft: '10px', marginRight: '5px'}}/>
+                            {item.artist.name} - {item.title}
+                          </p>
                         </Row>
                     )}
                   </div>
