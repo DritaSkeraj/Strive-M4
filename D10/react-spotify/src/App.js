@@ -18,7 +18,7 @@ function App() {
         <Route path='/' exact component={AsideMenu} />
         <Route path='/' exact component={Player} />
         <Route path='/' exact component={HomeContent} />
-        <Route path='/albumPage' exact component={AlbumPage} />
+        <Route path='/albumPage/:album' exact component={AlbumPage} />
         <Route path='/artistPage/:artist' exact component={ArtistPage} />
         <Route path='/search' exact component={SearchPage} />
     </Router>

@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom';
 
 class HomeContent extends React.Component {
   state = {
-    artists: ["pink floyd", "eric clapton", "linkin park"],
+    artists: ["pink floyd", "eric clapton", "linkin park", "arctic monkeys", "sting", "system of a down"],
     albums: [],
     error: "",
     loading: true,
@@ -24,7 +24,7 @@ class HomeContent extends React.Component {
       const result = await this.fetchArtist(artist);
       return {
         name: artist.toUpperCase(),
-        data: result.data.slice(0,15),
+        data: result.data.slice(0,10),
       };
     });
     const result = await Promise.all(promiseArray);
@@ -80,7 +80,9 @@ class HomeContent extends React.Component {
                   <Link to={`/artistPage/${category.name}`}><h4 className="artist-name">{category.name}</h4></Link>
                   <Row>
                     {category.data.map((album, key) => (
-                      <SingleSong image={album.album.cover} title={album.title}/>
+                      <Link to={`/albumPage/${album.album.id}`}>
+                        <SingleSong image={album.album.cover} title={album.title}/>
+                      </Link>
                     ))}
                   </Row>
                 </div>

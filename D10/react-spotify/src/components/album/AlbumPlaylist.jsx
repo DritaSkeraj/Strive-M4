@@ -53,7 +53,7 @@ class AlbumPlaylist extends Component {
         rgba(18, 18, 18, 1) 0%,
         rgba(18, 18, 18, 0.9752275910364145) 36%,
         rgba(18, 18, 18, 0.9192051820728291) 84%,
-        ${this.state.colors[0]} 100%
+        ${this.state.colors[3]} 100%
       )`,
       padding: '20px 40px'
   }
@@ -78,7 +78,7 @@ class AlbumPlaylist extends Component {
           rgba(18, 18, 18, 1) 0%,
           rgba(18, 18, 18, 0.9752275910364145) 36%,
           rgba(18, 18, 18, 0.9192051820728291) 84%,
-          ${this.state.colors[0]} 100%
+          ${this.state.colors[3]} 100%
         )`,
         padding: '20px 40px'
     }}>

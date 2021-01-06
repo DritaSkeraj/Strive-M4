@@ -51,7 +51,7 @@ class AlbumHeader extends Component {
         <div
           className="album-header"
           id="header"
-          style={{ backgroundColor: this.state.colors[0] }}
+          style={{ backgroundColor: this.state.colors[3] }}
         >
           <div className="arrow-container">
             <AiOutlineLeft className="arrow" />

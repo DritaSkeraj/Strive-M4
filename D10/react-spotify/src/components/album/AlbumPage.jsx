@@ -6,22 +6,20 @@ import Player from "../Player";
 import Menu from "./Menu.jsx";
 import { Row, Col } from "react-bootstrap";
 import '../../styles/styles.css';
+import {withRouter} from 'react-router-dom';
 
 class AlbumPage extends Component {
 
-  state = {
-    albumId: '194219022'
-  }
-
   render() {
+            
     return (
       <div>
           <Menu />
           <div className='mainframe' >
             <div className='main-content' >
-              <AlbumHeader albumId={this.state.albumId}/>
-              <AlbumInfo albumId={this.state.albumId}/>
-              <AlbumPlaylist albumId={this.state.albumId}/>
+              <AlbumHeader albumId={this.props.match.params.album}/>
+              <AlbumInfo albumId={this.props.match.params.album}/>
+              <AlbumPlaylist albumId={this.props.match.params.album}/>
             </div>
           </div>
           <Player />
@@ -30,4 +28,4 @@ class AlbumPage extends Component {
   }
 }
 
-export default AlbumPage;
+export default withRouter(AlbumPage);
