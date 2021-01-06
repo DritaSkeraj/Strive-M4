@@ -19,7 +19,7 @@ function App() {
         <Route path='/' exact component={Player} />
         <Route path='/' exact component={HomeContent} />
         <Route path='/albumPage' exact component={AlbumPage} />
-        <Route path='/artistPage' exact component={ArtistPage} />
+        <Route path='/artistPage/:artist' exact component={ArtistPage} />
         <Route path='/search' exact component={SearchPage} />
     </Router>
   );

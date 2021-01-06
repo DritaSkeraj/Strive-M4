@@ -9,6 +9,7 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import "../styles/styles.css";
 import HomeNavigationMenu from "./HomeNavigationMenu";
 import SingleSong from './SingleSong';
+import {Link} from 'react-router-dom';
 
 class HomeContent extends React.Component {
   state = {
@@ -76,7 +77,7 @@ class HomeContent extends React.Component {
             ) : (
               albums.map((category, key) => (
                 <div>
-                  <h4 className="artist-name">{category.name}</h4>
+                  <Link to={`/artistPage/${category.name}`}><h4 className="artist-name">{category.name}</h4></Link>
                   <Row>
                     {category.data.map((album, key) => (
                       <SingleSong image={album.album.cover} title={album.title}/>

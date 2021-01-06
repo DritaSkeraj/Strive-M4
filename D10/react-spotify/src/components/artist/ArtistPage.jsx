@@ -7,6 +7,7 @@ import ArtistAlbums from "./ArtistAlbums";
 import { Row, Spinner } from "react-bootstrap";
 import backgroundImg from "../../assets/rock-concert.jpg";
 import SingleSong from "../SingleSong";
+import {withRouter} from 'react-router-dom';
 
 class ArtistPage extends Component {
   state = {
@@ -17,12 +18,12 @@ class ArtistPage extends Component {
   };
 
   componentDidMount = () => {
-    this.fetchAlbums("pink floyd");    
+    this.fetchAlbums(this.props.match.params.artist);    
   };
 
   fetchAlbums = (artist) => {
     fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist,
+      `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
       {
         method: "GET",
         headers: {
@@ -254,4 +255,4 @@ class ArtistPage extends Component {
   }
 }
 
-export default ArtistPage;
+export default withRouter(ArtistPage);
