@@ -3,6 +3,7 @@ import "../../styles/albums.css";
 import { Spinner, Row, Col } from "react-bootstrap";
 import { ColorExtractor } from "react-color-extractor";
 import { AiOutlineInsertRowAbove } from "react-icons/ai";
+import {Link} from 'react-router-dom';
 
 class AlbumInfo extends Component {
   state = {
@@ -82,8 +83,10 @@ class AlbumInfo extends Component {
               className="group-img mr-2"
             />
             <h6>
-              <a href="../artist-page.html" className="group-name">
+              <a className="group-name">
+              <Link to={`/artistPage/${this.state.album.artist.name}`}>
                 {this.state.album.artist.name}
+                </Link>
               </a>
             </h6>
             <p className="album-length">{this.state.album.release_date.slice(0, 4)} •  

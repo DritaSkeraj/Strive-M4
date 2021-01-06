@@ -7,6 +7,7 @@ import { BsPlusSquareFill } from 'react-icons/bs'
 import { AiFillHeart } from 'react-icons/ai';
 import { FiArrowDownCircle } from 'react-icons/fi'
 import logo from '../../assets/logo.png'
+import {Link} from 'react-router-dom';
 
 class Menu extends Component {
   render() {
@@ -14,23 +15,27 @@ class Menu extends Component {
       <div>
         <aside>
           <div>
-              <img src={logo} alt="logo" className="logo" />
+              <Link to={'/'}><img src={logo} alt="logo" className="logo" /></Link>
           </div>
           <div className="menu d-flex column justify-content-start align-items-center">
             <div className="col">
-              <a href="../index.html">
+            <Link to={'/'}>
+              <a className='link'>
                 {" "}
                 <FiHome className='basic' />
                 Home
               </a>
+              </Link>
             </div>
           </div>
           <div className="menu d-flex column justify-content-start align-items-center">
             <div className="col">
-              <a href="#">
+            <Link to={'/search'}>
+              <a className='link'>
                 {" "}
                 <BiSearch className='basic' />Search
               </a>
+              </Link>
             </div>
           </div>
           <div className="menu d-flex column justify-content-start align-items-center">

@@ -162,12 +162,10 @@
 /* .group-name {
   color: white;
   font-weight: 800;
-}
+}*/
 .group-name:hover {
-  color: white;
-  text-decoration: underline;
-  font-size: 15px;
-} */
+  cursor: pointer;
+} 
 .album-length {
   color: #b3b3b3;
   display: block;

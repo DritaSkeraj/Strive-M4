@@ -9,3 +9,6 @@
 .playlist-items{
     font-size: 0.8em;
 }
+.link:hover{
+    cursor: pointer;
+}
